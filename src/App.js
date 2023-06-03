@@ -4,10 +4,16 @@ import Header from './components/Header/Header';
 import Formulario from "./components/Formulario/Formulario";
 import MiOrg from './components/MiOrg';
 import Equipo from './components/Equipo';
+import Footer from './components/Footer';
 
 function App() {
   const [mostrarFormulario, actualizarMostrar] = useState(false);
-  const [colaboradores, actualizarColaborabores] = useState([]);
+  const [colaboradores, actualizarColaborabores] = useState([{
+    equipo: "Front End",
+    foto: "https://github.com/harlandlohora.png",
+    nombre: "Harland Lohora",
+    puesto: "Instructor"
+  }]);
 
   //Ternario --> condicion ? seMuestra : noseMuestra
   //Cortocircuito: condicon && seMuestra
@@ -78,9 +84,12 @@ function App() {
         equipos.map((equipo) => <Equipo
           datos={equipo}
           key={equipo.titulo}
-          colaboradores={colaboradores.filter( colaborador => colaborador.equipo === equipo.titulo)}
+          colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
         />)
       }
+
+      <Footer />
+
     </div>
   );
 }
